@@ -64,7 +64,7 @@ public class Cliente_TO {
      *
      * Columna idCiudad
      */
-    private int idCiudad;
+    private Ciudad_TO ciudad;
 
     /**
      *
@@ -76,13 +76,30 @@ public class Cliente_TO {
      *
      * Columna idAsesor
      */
-    private int idAsesor;
+    private Usuario_TO asesor;
 
     //Constructores
     public Cliente_TO() {
     }
 
-    public Cliente_TO(int idCliente, String razonSocial, String nit, String paginaWeb, String email, String telefono, String movil, int idCiudad, String direccion, int idAsesor) {
+    public Cliente_TO(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Cliente_TO(String razonSocial, String nit, String paginaWeb, String email, String telefono, String movil, Ciudad_TO ciudad, String direccion, Usuario_TO asesor) {
+        this.razonSocial = razonSocial;
+        this.nit = nit;
+        this.paginaWeb = paginaWeb;
+        this.email = email;
+        this.telefono = telefono;
+        this.movil = movil;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.asesor = asesor;
+    }
+
+    
+    public Cliente_TO(int idCliente, String razonSocial, String nit, String paginaWeb, String email, String telefono, String movil, Ciudad_TO ciudad, String direccion, Usuario_TO asesor) {
         this.idCliente = idCliente;
         this.razonSocial = razonSocial;
         this.nit = nit;
@@ -90,11 +107,12 @@ public class Cliente_TO {
         this.email = email;
         this.telefono = telefono;
         this.movil = movil;
-        this.idCiudad = idCiudad;
+        this.ciudad = ciudad;
         this.direccion = direccion;
-        this.idAsesor = idAsesor;
+        this.asesor = asesor;
     }
 
+    
     //Getters and Setters
     public int getIdCliente() {
         return idCliente;
@@ -152,14 +170,6 @@ public class Cliente_TO {
         this.movil = movil;
     }
 
-    public int getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -168,17 +178,27 @@ public class Cliente_TO {
         this.direccion = direccion;
     }
 
-    public int getIdAsesor() {
-        return idAsesor;
+    public Ciudad_TO getCiudad() {
+        return ciudad;
     }
 
-    public void setIdAsesor(int idAsesor) {
-        this.idAsesor = idAsesor;
+    public void setCiudad(Ciudad_TO ciudad) {
+        this.ciudad = ciudad;
     }
+
+    public Usuario_TO getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Usuario_TO asesor) {
+        this.asesor = asesor;
+    }
+
+    
 
     @Override
     public String toString() {
-        return "Cliente_TO{" + "idCliente=" + idCliente + ", razonSocial=" + razonSocial + ", nit=" + nit + ", paginaWeb=" + paginaWeb + ", email=" + email + ", telefono=" + telefono + ", movil=" + movil + ", idCiudad=" + idCiudad + ", direccion=" + direccion + ", idAsesor=" + idAsesor + '}';
+        return "Cliente_TO{" + "idCliente=" + idCliente + ", razonSocial=" + razonSocial + ", nit=" + nit + ", paginaWeb=" + paginaWeb + ", email=" + email + ", telefono=" + telefono + ", movil=" + movil + ", idCiudad=" + ciudad.getIdPais() + ", direccion=" + direccion + ", idAsesor=" + asesor.getIdUsuario() + '}';
     }
 
 }

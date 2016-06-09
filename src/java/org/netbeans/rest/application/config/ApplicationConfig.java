@@ -29,6 +29,23 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(co.com.riit.servicio.impl.ConsultarClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarClientesImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarClientesSegunAsesorImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarEmpleadoImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosSegunClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarUsuarioImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarUsuariosImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarEmpleadoImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarUsuarioImpl.class);
+        resources.add(co.com.riit.servicio.impl.EliminarEmpleadoImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarEmpleadoImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarUsuarioImpl.class);
     }
     
 }

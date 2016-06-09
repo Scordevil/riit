@@ -29,13 +29,13 @@ public class Oportunidad_TO {
      *
      * Columna idEmpleado
      */
-    private int idEmpleado;
+    private Empleado_TO empleado;
 
     /**
      *
      * Columna idUsuario
      */
-    private int idUsuario;
+    private Usuario_TO usuario;
 
     /**
      *
@@ -47,19 +47,33 @@ public class Oportunidad_TO {
      *
      * Columna idCategoriaOportunidad
      */
-    private int idCategoriaOportunidad;
+    private CategoriaOportunidad_TO categoriaOportunidad;
 
     //Constructores
     public Oportunidad_TO() {
     }
 
-    public Oportunidad_TO(int idOportunidad, int idEmpleado, int idUsuario, Date fecha, int idCategoriaOportunidad) {
+    public Oportunidad_TO(int idOportunidad) {
         this.idOportunidad = idOportunidad;
-        this.idEmpleado = idEmpleado;
-        this.idUsuario = idUsuario;
-        this.fecha = fecha;
-        this.idCategoriaOportunidad = idCategoriaOportunidad;
     }
+
+    public Oportunidad_TO(Empleado_TO empleado, Usuario_TO usuario, Date fecha, CategoriaOportunidad_TO categoriaOportunidad) {
+        this.empleado = empleado;
+        this.usuario = usuario;
+        this.fecha = fecha;
+        this.categoriaOportunidad = categoriaOportunidad;
+    }
+
+    
+    public Oportunidad_TO(int idOportunidad, Empleado_TO empleado, Usuario_TO usuario, Date fecha, CategoriaOportunidad_TO categoriaOportunidad) {
+        this.idOportunidad = idOportunidad;
+        this.empleado = empleado;
+        this.usuario = usuario;
+        this.fecha = fecha;
+        this.categoriaOportunidad = categoriaOportunidad;
+    }
+
+    
 
     //Getters and Setters
     public int getIdOportunidad() {
@@ -70,20 +84,20 @@ public class Oportunidad_TO {
         this.idOportunidad = idOportunidad;
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public Empleado_TO getEmpleado() {
+        return empleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setEmpleado(Empleado_TO empleado) {
+        this.empleado = empleado;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario_TO getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario_TO usuario) {
+        this.usuario = usuario;
     }
 
     public Date getFecha() {
@@ -94,17 +108,18 @@ public class Oportunidad_TO {
         this.fecha = fecha;
     }
 
-    public int getIdCategoriaOportunidad() {
-        return idCategoriaOportunidad;
+    public CategoriaOportunidad_TO getCategoriaOportunidad() {
+        return categoriaOportunidad;
     }
 
-    public void setIdCategoriaOportunidad(int idCategoriaOportunidad) {
-        this.idCategoriaOportunidad = idCategoriaOportunidad;
+    public void setCategoriaOportunidad(CategoriaOportunidad_TO categoriaOportunidad) {
+        this.categoriaOportunidad = categoriaOportunidad;
     }
 
+    
     @Override
     public String toString() {
-        return "Oportunidad_TO{" + "idOportunidad=" + idOportunidad + ", idEmpleado=" + idEmpleado + ", idUsuario=" + idUsuario + ", fecha=" + fecha + ", idCategoriaOportunidad=" + idCategoriaOportunidad + '}';
+        return "Oportunidad_TO{" + "idOportunidad=" + idOportunidad + ", idEmpleado=" + empleado.getIdEmpleado() + ", idUsuario=" + usuario.getIdUsuario() + ", fecha=" + fecha + ", idCategoriaOportunidad=" + categoriaOportunidad.getIdCategoriaOportunidad() + '}';
     }
 
 }

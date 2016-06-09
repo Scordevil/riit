@@ -52,27 +52,43 @@ public class Usuario_TO {
      *
      * Columna idRol
      */
-    private int idRol;
+    private Rol_TO rol;
 
     /**
      *
      * Columna idEstado
      */
-    private int idEstado;
+    private Estado_TO estado;
 
     //Constructores
     public Usuario_TO() {
     }
 
-    public Usuario_TO(int idUsuario, String nombre, String email, String celular, String contrasena, int idRol, int idEstado) {
+    public Usuario_TO(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario_TO(String nombre, String email, String celular, String contrasena, Rol_TO rol, Estado_TO estado) {
+        this.nombre = nombre;
+        this.email = email;
+        this.celular = celular;
+        this.contrasena = contrasena;
+        this.rol = rol;
+        this.estado = estado;
+    }
+    
+    
+
+    public Usuario_TO(int idUsuario, String nombre, String email, String celular, String contrasena, Rol_TO rol, Estado_TO estado) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.email = email;
         this.celular = celular;
         this.contrasena = contrasena;
-        this.idRol = idRol;
-        this.idEstado = idEstado;
+        this.rol = rol;
+        this.estado = estado;
     }
+    
 
     //Getters and Setters
     public int getIdUsuario() {
@@ -115,25 +131,27 @@ public class Usuario_TO {
         this.contrasena = contrasena;
     }
 
-    public int getIdRol() {
-        return idRol;
+    public Rol_TO getRol() {
+        return rol;
     }
 
-    public void setIdRol(int idRol) {
-        this.idRol = idRol;
+    public void setRol(Rol_TO rol) {
+        this.rol = rol;
     }
 
-    public int getIdEstado() {
-        return idEstado;
+    public Estado_TO getEstado() {
+        return estado;
     }
 
-    public void setIdEstado(int idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(Estado_TO estado) {
+        this.estado = estado;
     }
+
+   
 
     @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", email=" + email + ", celular=" + celular + ", contrasena=" + contrasena + ", idRol=" + idRol + ", idEstado=" + idEstado + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", email=" + email + ", celular=" + celular + ", contrasena=" + contrasena + ", idRol=" + rol.getIdRol() + ", idEstado=" + estado.getIdEstado() + '}';
     }
 
 }

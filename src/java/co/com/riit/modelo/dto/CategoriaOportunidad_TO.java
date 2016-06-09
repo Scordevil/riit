@@ -31,9 +31,15 @@ public class CategoriaOportunidad_TO {
     private String nombre;
 
     //Constructores
-    public CategoriaOportunidad_TO() {
+    public CategoriaOportunidad_TO() {        
+        
     }
 
+    public CategoriaOportunidad_TO(int idCategoriaOportunidad) {
+        this.idCategoriaOportunidad = idCategoriaOportunidad;
+    }
+
+    
     public CategoriaOportunidad_TO(int idCategoriaOportunidad, String nombre) {
         this.idCategoriaOportunidad = idCategoriaOportunidad;
         this.nombre = nombre;

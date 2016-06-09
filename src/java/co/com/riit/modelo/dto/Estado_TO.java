@@ -34,6 +34,10 @@ public class Estado_TO {
     public Estado_TO() {
     }
 
+    public Estado_TO(int idEstado) {
+        this.idEstado = idEstado;
+    }
+
     public Estado_TO(int idEstado, String nombre) {
         this.idEstado = idEstado;
         this.nombre = nombre;

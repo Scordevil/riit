@@ -5,6 +5,7 @@
  */
 package co.com.riit.modelo.dto;
 
+import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -38,6 +39,10 @@ public class Ciudad_TO {
 
     //Constructores
     public Ciudad_TO() {
+    }
+
+    public Ciudad_TO(int idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     public Ciudad_TO(int idCiudad, String nombre, int idPais) {

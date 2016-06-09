@@ -34,6 +34,12 @@ public class Rol_TO {
     public Rol_TO() {
     }
 
+    public Rol_TO(int idRol) {
+        this.idRol = idRol;
+    }
+
+    
+    
     public Rol_TO(int idRol, String nombre) {
         this.idRol = idRol;
         this.nombre = nombre;

@@ -28,7 +28,7 @@ public class Empleado_TO {
      *
      * Columna idCliente
      */
-    private int idCliente;
+    private Cliente_TO cliente;
 
     /**
      *
@@ -58,9 +58,23 @@ public class Empleado_TO {
     public Empleado_TO() {
     }
 
-    public Empleado_TO(int idEmpleado, int idCliente, String nombre, String cargo, String movil, String correo) {
+    public Empleado_TO(int idEmpleado) {
         this.idEmpleado = idEmpleado;
-        this.idCliente = idCliente;
+    }
+
+    public Empleado_TO(Cliente_TO cliente, String nombre, String cargo, String movil, String correo) {
+        this.cliente = cliente;
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.movil = movil;
+        this.correo = correo;
+    }
+    
+    
+
+    public Empleado_TO(int idEmpleado, Cliente_TO cliente, String nombre, String cargo, String movil, String correo) {
+        this.idEmpleado = idEmpleado;
+        this.cliente = cliente;
         this.nombre = nombre;
         this.cargo = cargo;
         this.movil = movil;
@@ -74,14 +88,6 @@ public class Empleado_TO {
 
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -114,11 +120,21 @@ public class Empleado_TO {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+ 
     }
 
+    public Cliente_TO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente_TO cliente) {
+        this.cliente = cliente;
+    }
+
+    
     @Override
     public String toString() {
-        return "Empleado_TO{" + "idEmpleado=" + idEmpleado + ", idCliente=" + idCliente + ", nombre=" + nombre + ", cargo=" + cargo + ", movil=" + movil + ", correo=" + correo + '}';
+        return "Empleado_TO{" + "idEmpleado=" + idEmpleado + ", idCliente=" + cliente.getIdCliente() + ", nombre=" + nombre + ", cargo=" + cargo + ", movil=" + movil + ", correo=" + correo + '}';
     }
 
 }

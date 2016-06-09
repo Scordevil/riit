@@ -5,6 +5,7 @@
  */
 package co.com.riit.modelo.dto;
 
+import java.sql.Time;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,7 +30,7 @@ public class TicketSitio_TO {
      *
      * Columna idOportunidad
      */
-    private int idOportunidad;
+    private Oportunidad_TO oportunidad;
 
     /**
      *
@@ -59,7 +60,7 @@ public class TicketSitio_TO {
      *
      * Columna horaInicio
      */
-    private String horaInicio;
+    private Time horaInicio;
 
     /**
      *
@@ -71,13 +72,13 @@ public class TicketSitio_TO {
      *
      * Columna horaCierre
      */
-    private String horaCierre;
+    private Time horaCierre;
 
     /**
      *
      * Columna idEstado
      */
-    private int idEstado;
+    private Estado_TO estado;
 
     /**
      *
@@ -113,9 +114,8 @@ public class TicketSitio_TO {
     public TicketSitio_TO() {
     }
 
-    public TicketSitio_TO(int idTicket, int idOportunidad, String consulta, String diagnostico, String solucion, Date fechaInicio, String horaInicio, Date fechaCierre, String horaCierre, int idEstado, String foto1, String foto2, String foto3, String foto4, String foto5) {
-        this.idTicket = idTicket;
-        this.idOportunidad = idOportunidad;
+    public TicketSitio_TO(Oportunidad_TO oportunidad, String consulta, String diagnostico, String solucion, Date fechaInicio, Time horaInicio, Date fechaCierre, Time horaCierre, Estado_TO estado, String foto1, String foto2, String foto3, String foto4, String foto5) {
+        this.oportunidad = oportunidad;
         this.consulta = consulta;
         this.diagnostico = diagnostico;
         this.solucion = solucion;
@@ -123,7 +123,7 @@ public class TicketSitio_TO {
         this.horaInicio = horaInicio;
         this.fechaCierre = fechaCierre;
         this.horaCierre = horaCierre;
-        this.idEstado = idEstado;
+        this.estado = estado;
         this.foto1 = foto1;
         this.foto2 = foto2;
         this.foto3 = foto3;
@@ -131,8 +131,27 @@ public class TicketSitio_TO {
         this.foto5 = foto5;
     }
 
-    //Getters and Setters
-    public int getIdTicket() {
+    public TicketSitio_TO(int idTicket, Oportunidad_TO oportunidad, String consulta, String diagnostico, String solucion, Date fechaInicio, Time horaInicio, Date fechaCierre, Time horaCierre, Estado_TO estado, String foto1, String foto2, String foto3, String foto4, String foto5) {
+        this.idTicket = idTicket;
+        this.oportunidad = oportunidad;
+        this.consulta = consulta;
+        this.diagnostico = diagnostico;
+        this.solucion = solucion;
+        this.fechaInicio = fechaInicio;
+        this.horaInicio = horaInicio;
+        this.fechaCierre = fechaCierre;
+        this.horaCierre = horaCierre;
+        this.estado = estado;
+        this.foto1 = foto1;
+        this.foto2 = foto2;
+        this.foto3 = foto3;
+        this.foto4 = foto4;
+        this.foto5 = foto5;
+    }
+
+    
+    
+    public int getIdTicket() {   
         return idTicket;
     }
 
@@ -140,12 +159,12 @@ public class TicketSitio_TO {
         this.idTicket = idTicket;
     }
 
-    public int getIdOportunidad() {
-        return idOportunidad;
+    public Oportunidad_TO getOportunidad() {
+        return oportunidad;
     }
 
-    public void setIdOportunidad(int idOportunidad) {
-        this.idOportunidad = idOportunidad;
+    public void setOportunidad(Oportunidad_TO oportunidad) {
+        this.oportunidad = oportunidad;
     }
 
     public String getConsulta() {
@@ -179,15 +198,7 @@ public class TicketSitio_TO {
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
+   
     public Date getFechaCierre() {
         return fechaCierre;
     }
@@ -196,20 +207,12 @@ public class TicketSitio_TO {
         this.fechaCierre = fechaCierre;
     }
 
-    public String getHoraCierre() {
-        return horaCierre;
+    public Estado_TO getEstado() {
+        return estado;
     }
 
-    public void setHoraCierre(String horaCierre) {
-        this.horaCierre = horaCierre;
-    }
-
-    public int getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(int idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(Estado_TO estado) {
+        this.estado = estado;
     }
 
     public String getFoto1() {
@@ -248,13 +251,32 @@ public class TicketSitio_TO {
         return foto5;
     }
 
-    public void setFoto5(String foto5) {
+    //Getters and Setters
+    public void setFoto5(String foto5) {    
         this.foto5 = foto5;
     }
 
+    public Time getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(Time horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Time getHoraCierre() {
+        return horaCierre;
+    }
+
+    public void setHoraCierre(Time horaCierre) {
+        this.horaCierre = horaCierre;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "TicketSitio_TO{" + "idTicket=" + idTicket + ", idOportunidad=" + idOportunidad + ", consulta=" + consulta + ", diagnostico=" + diagnostico + ", solucion=" + solucion + ", fechaInicio=" + fechaInicio + ", horaInicio=" + horaInicio + ", fechaCierre=" + fechaCierre + ", horaCierre=" + horaCierre + ", idEstado=" + idEstado + ", foto1=" + foto1 + ", foto2=" + foto2 + ", foto3=" + foto3 + ", foto4=" + foto4 + ", foto5=" + foto5 + '}';
+        return "TicketSitio_TO{" + "idTicket=" + idTicket + ", idOportunidad=" + oportunidad.getIdOportunidad() + ", consulta=" + consulta + ", diagnostico=" + diagnostico + ", solucion=" + solucion + ", fechaInicio=" + fechaInicio + ", horaInicio=" + horaInicio + ", fechaCierre=" + fechaCierre + ", horaCierre=" + horaCierre + ", idEstado=" + estado.getIdEstado() + ", foto1=" + foto1 + ", foto2=" + foto2 + ", foto3=" + foto3 + ", foto4=" + foto4 + ", foto5=" + foto5 + '}';
     }
 
 }
