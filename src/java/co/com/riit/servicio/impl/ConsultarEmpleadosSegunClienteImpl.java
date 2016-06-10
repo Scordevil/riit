@@ -15,6 +15,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -27,7 +28,7 @@ public class ConsultarEmpleadosSegunClienteImpl implements ConsultarEmpleadosSeg
     @GET
     @Produces({"application/json"})
     @Override
-    public List<Empleado_TO> consultarEmpleadosSegunCliente(int idCliente) throws Exception {
+    public List<Empleado_TO> consultarEmpleadosSegunCliente(@QueryParam("idCliente") int idCliente) throws Exception {
         Cliente_TO cliente = new Cliente_TO(idCliente);
         EmpleadoDAO empleadoDao = new EmpleadoDAOImpl();
         return empleadoDao.consultarEmpleadosSegunCliente(cliente);

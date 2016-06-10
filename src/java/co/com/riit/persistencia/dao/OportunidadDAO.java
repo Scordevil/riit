@@ -22,5 +22,5 @@ public interface OportunidadDAO {
 
     public List<Oportunidad_TO> consultarOportunidades() throws Exception;
 
-    public List<Oportunidad_TO> consultarOportunidad(Oportunidad_TO oportunidad) throws Exception;
+    public Oportunidad_TO consultarOportunidad(Oportunidad_TO oportunidad) throws Exception;
 }

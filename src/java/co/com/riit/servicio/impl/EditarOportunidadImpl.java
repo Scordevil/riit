@@ -12,6 +12,8 @@ import co.com.riit.modelo.dto.Usuario_TO;
 import co.com.riit.persistencia.dao.OportunidadDAO;
 import co.com.riit.persistencia.dao.impl.OportunidadDAOImpl;
 import co.com.riit.servicio.EditarOportunidad;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -33,10 +35,18 @@ public class EditarOportunidadImpl implements EditarOportunidad {
     public Oportunidad_TO editarOportunidad(@QueryParam("idOportunidad") int idOportunidad,
             @QueryParam("idEmpleado") int idEmpleado,
             @QueryParam("idUsuario") int idUsuario,
-            @QueryParam("fecha") Date fecha,
+            @QueryParam("fecha") String fecha,
             @QueryParam("idCategoriaOportunidad") int idCategoriaOportunidad) throws Exception {
 
-        Oportunidad_TO oportunidad = new Oportunidad_TO(idOportunidad, new Empleado_TO(idEmpleado), new Usuario_TO(idUsuario), fecha, new CategoriaOportunidad_TO(idCategoriaOportunidad));
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date f = new Date();
+        try {
+            f = formatoDeFecha.parse(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        Oportunidad_TO oportunidad = new Oportunidad_TO(idOportunidad, new Empleado_TO(idEmpleado), new Usuario_TO(idUsuario), f, new CategoriaOportunidad_TO(idCategoriaOportunidad));
         OportunidadDAO oportunidadDao = new OportunidadDAOImpl();
         return oportunidadDao.editarOportunidad(oportunidad);
     }

@@ -13,6 +13,7 @@ import co.com.riit.modelo.dto.Usuario_TO;
 import co.com.riit.persistencia.dao.OportunidadDAO;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +28,13 @@ public class OportunidadDAOImpl implements OportunidadDAO {
     @Override
     public Oportunidad_TO registrarOportunidad(Oportunidad_TO oportunidad) throws Exception {
         Oportunidad_TO nuevaoportunidad = new Oportunidad_TO();
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "INSERT INTO oportunidad (idEmpleado, idUsuario, fecha, idCategoriaOportunidad) "
                         + "VALUES ('" + oportunidad.getEmpleado().getIdEmpleado() + "', "
                         + "'" + oportunidad.getUsuario().getIdUsuario() + "', "
-                        + "'" + oportunidad.getFecha() + "', "
+                        + "'" + formatoDeFecha.format(oportunidad.getFecha()) + "', "
                         + "'" + oportunidad.getCategoriaOportunidad().getIdCategoriaOportunidad() + "')";
                 st.execute(sql);
             } catch (Exception e) {
@@ -50,11 +52,12 @@ public class OportunidadDAOImpl implements OportunidadDAO {
     @Override
     public Oportunidad_TO editarOportunidad(Oportunidad_TO oportunidad) throws Exception {
         Oportunidad_TO nuevaoportunidad = new Oportunidad_TO();
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "UPDATE oportunidad SET idEmpleado = '" + oportunidad.getEmpleado().getIdEmpleado() + "',"
                         + " idUsuario = '" + oportunidad.getUsuario().getIdUsuario() + "',"
-                        + " fecha = '" + oportunidad.getFecha() + "',"
+                        + " fecha = '" + formatoDeFecha.format(oportunidad.getFecha()) + "',"
                         + " idCategoriaOportunidad = '" + oportunidad.getCategoriaOportunidad().getIdCategoriaOportunidad() + "'"
                         + " WHERE idOportunidad = '" + oportunidad.getIdOportunidad() + "'";
                 st.execute(sql);
@@ -117,8 +120,8 @@ public class OportunidadDAOImpl implements OportunidadDAO {
     }
 
     @Override
-    public List<Oportunidad_TO> consultarOportunidad(Oportunidad_TO oportunidad) throws Exception {
-        List<Oportunidad_TO> oportunidades = new ArrayList<>();
+    public Oportunidad_TO consultarOportunidad(Oportunidad_TO oportunidad) throws Exception {
+        Oportunidad_TO nuevaoportunidad = new Oportunidad_TO();
         try {
             try {
                 String sql = "SELECT idOportunidad, idEmpleado, idUsuario, fecha, idCategoriaOportunidad "
@@ -126,11 +129,11 @@ public class OportunidadDAOImpl implements OportunidadDAO {
                         + "WHERE idOportunidad = '" + oportunidad.getIdOportunidad() + "'";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    oportunidades.add(new Oportunidad_TO(rs.getInt(1),
+                    nuevaoportunidad = new Oportunidad_TO(rs.getInt(1),
                             new Empleado_TO(rs.getInt(2)),
                             new Usuario_TO(rs.getInt(3)),
                             rs.getDate(4),
-                            new CategoriaOportunidad_TO(rs.getInt(2))));
+                            new CategoriaOportunidad_TO(rs.getInt(2)));
                 }
             } catch (Exception e) {
                 throw e;
@@ -140,7 +143,7 @@ public class OportunidadDAOImpl implements OportunidadDAO {
         } finally {
             ConexionSQL.CerrarConexion();
         }
-        return oportunidades;
+        return nuevaoportunidad;
     }
 
 }

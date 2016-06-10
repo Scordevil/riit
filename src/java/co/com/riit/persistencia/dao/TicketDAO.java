@@ -20,7 +20,7 @@ public interface TicketDAO {
     
     public Ticket_TO eliminarTicket(Ticket_TO ticket) throws Exception;
     
-    public List<Ticket_TO> consultarTicket() throws Exception;
+    public List<Ticket_TO> consultarTickets() throws Exception;
     
     public Ticket_TO consultarTicket(Ticket_TO ticket) throws Exception;
 }

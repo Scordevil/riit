@@ -12,6 +12,8 @@ import co.com.riit.modelo.dto.Usuario_TO;
 import co.com.riit.persistencia.dao.OportunidadDAO;
 import co.com.riit.persistencia.dao.impl.OportunidadDAOImpl;
 import co.com.riit.servicio.RegistrarOportunidad;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -25,19 +27,26 @@ import javax.ws.rs.QueryParam;
  */
 @Stateless
 @Path("/registrarOportunidad")
-public class RegistrarOportunidadImpl implements RegistrarOportunidad{
+public class RegistrarOportunidadImpl implements RegistrarOportunidad {
 
     @GET
     @Produces({"application/json"})
     @Override
-    public Oportunidad_TO registrarOportunidad(@QueryParam("idEmpleado") int idEmpleado, 
-            @QueryParam("idUsuario") int idUsuario, 
-            @QueryParam("fecha") Date fecha, 
+    public Oportunidad_TO registrarOportunidad(@QueryParam("idEmpleado") int idEmpleado,
+            @QueryParam("idUsuario") int idUsuario,
+            @QueryParam("fecha") String fecha,
             @QueryParam("idCategoriaOportunidad") int idCategoriaOportunidad) throws Exception {
-        
-        Oportunidad_TO oportunidad = new Oportunidad_TO(new Empleado_TO(idEmpleado), new Usuario_TO(idUsuario), fecha, new CategoriaOportunidad_TO(idCategoriaOportunidad));
+
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date f = new Date();
+        try {
+            f = formatoDeFecha.parse(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Oportunidad_TO oportunidad = new Oportunidad_TO(new Empleado_TO(idEmpleado), new Usuario_TO(idUsuario), f, new CategoriaOportunidad_TO(idCategoriaOportunidad));
         OportunidadDAO oportunidadDao = new OportunidadDAOImpl();
         return oportunidadDao.registrarOportunidad(oportunidad);
     }
-    
 }

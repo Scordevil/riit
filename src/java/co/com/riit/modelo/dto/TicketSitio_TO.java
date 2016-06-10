@@ -114,6 +114,12 @@ public class TicketSitio_TO {
     public TicketSitio_TO() {
     }
 
+    public TicketSitio_TO(int idTicket) {
+        this.idTicket = idTicket;
+    }
+
+    
+    
     public TicketSitio_TO(Oportunidad_TO oportunidad, String consulta, String diagnostico, String solucion, Date fechaInicio, Time horaInicio, Date fechaCierre, Time horaCierre, Estado_TO estado, String foto1, String foto2, String foto3, String foto4, String foto5) {
         this.oportunidad = oportunidad;
         this.consulta = consulta;

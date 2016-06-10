@@ -13,6 +13,7 @@ import co.com.riit.persistencia.dao.TicketSitioDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
     @Override
     public TicketSitio_TO registrarTicketSitio(TicketSitio_TO ticket) throws Exception {
         TicketSitio_TO nuevoticket = new TicketSitio_TO();
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "INSERT INTO ticketsitio"
@@ -35,9 +37,9 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
                         + "'" + ticket.getConsulta() + "', "
                         + "'" + ticket.getDiagnostico() + "', "
                         + "'" + ticket.getSolucion() + "', "
-                        + "'" + ticket.getFechaInicio() + "', "
+                        + "'" + formatoDeFecha.format(ticket.getFechaInicio()) + "', "
                         + "'" + ticket.getHoraInicio() + "', "
-                        + "'" + ticket.getFechaCierre() + "', "
+                        + "'" + formatoDeFecha.format(ticket.getFechaCierre()) + "', "
                         + "'" + ticket.getHoraCierre() + "', "
                         + "'" + ticket.getEstado().getIdEstado() + "', "
                         + "'" + ticket.getFoto1() + "', "
@@ -45,7 +47,7 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
                         + "'" + ticket.getFoto3() + "', "
                         + "'" + ticket.getFoto4() + "', "
                         + "'" + ticket.getFoto5() + "')";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new TicketSitio_TO();
                 throw e;
@@ -61,15 +63,16 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
     @Override
     public TicketSitio_TO editarTicketSitio(TicketSitio_TO ticket) throws Exception {
         TicketSitio_TO nuevoticket = new TicketSitio_TO();
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "UPDATE ticketsitio SET idOportunidad= '" + ticket.getOportunidad().getIdOportunidad() + "', "
                         + "consulta = '" + ticket.getConsulta() + "', "
                         + "diagnostico = '" + ticket.getDiagnostico() + "', "
                         + "solucion = '" + ticket.getSolucion() + "', "
-                        + "fechaInicio = '" + ticket.getFechaInicio() + "', "
+                        + "fechaInicio = '" + formatoDeFecha.format(ticket.getFechaInicio()) + "', "
                         + "horaInicio = '" + ticket.getHoraInicio() + "', "
-                        + "fechaCierre = '" + ticket.getFechaCierre() + "', "
+                        + "fechaCierre = '" + formatoDeFecha.format(ticket.getFechaCierre()) + "', "
                         + "horaCierre = '" + ticket.getHoraCierre() + "', "
                         + "idEstado = '" + ticket.getEstado().getIdEstado() + "', "
                         + "foto1 = '" + ticket.getFoto1() + "', "
@@ -78,7 +81,7 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
                         + "foto1 = '" + ticket.getFoto4() + "', "
                         + "foto1 = '" + ticket.getFoto5() + "' "
                         + "WHERE idTicket = '" + ticket.getIdTicket() + "'";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new TicketSitio_TO();
                 throw e;
@@ -97,7 +100,7 @@ public class TicketSitioDAOImpl implements TicketSitioDAO {
         try {
             try {
                 String sql = "DELETE FROM ticketsitio WHERE idTicket ='" + ticket.getIdTicket() + "'";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new TicketSitio_TO();
                 throw e;

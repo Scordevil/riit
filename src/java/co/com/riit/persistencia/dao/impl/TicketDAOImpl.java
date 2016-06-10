@@ -13,6 +13,7 @@ import co.com.riit.persistencia.dao.TicketDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,19 +28,20 @@ public class TicketDAOImpl implements TicketDAO {
     @Override
     public Ticket_TO registrarTicket(Ticket_TO ticket) throws Exception {
         Ticket_TO nuevoticket = new Ticket_TO();
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "INSERT INTO ticket (idOportunidad, consulta, fechaInicio, horaInicio, solucion, fechaCierre, horaCierre, idEstado, cotizacion) "
                         + "VALUES ('" + ticket.getOportunidad().getIdOportunidad() + "', "
                         + "'" + ticket.getConsulta() + "', "
-                        + "'" + ticket.getFechaInicio() + "', "
+                        + "'" + formatoDeFecha.format(ticket.getFechaInicio()) + "', "
                         + "'" + ticket.getHoraInicio() + "', "
                         + "'" + ticket.getSolucion() + "', "
-                        + "'" + ticket.getFechaCierre() + "', "
+                        + "'" + formatoDeFecha.format(ticket.getFechaCierre()) + "', "
                         + "'" + ticket.getHoraCierre() + "', "
                         + "'" + ticket.getEstado().getIdEstado() + "', "
                         + "'" + ticket.getCotizacion() + "')";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new Ticket_TO();
                 throw e;
@@ -54,20 +56,21 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public Ticket_TO editarTicket(Ticket_TO ticket) throws Exception {
-        Ticket_TO nuevoticket = new Ticket_TO();
+        Ticket_TO nuevoticket = new Ticket_TO();        
+        SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy-MM-dd");
         try {
             try {
                 String sql = "UPDATE ticket SET idOportunidad= '" + ticket.getOportunidad().getIdOportunidad() + "', "
                         + "consulta = '" + ticket.getConsulta() + "', "
-                        + "fechaInicio = '" + ticket.getFechaInicio() + "', "
+                        + "fechaInicio = '" + formatoDeFecha.format(ticket.getFechaInicio()) + "', "
                         + "horaInicio = '" + ticket.getHoraInicio() + "', "
                         + "solucion = '" + ticket.getSolucion() + "', "
-                        + "fechaCierre = '" + ticket.getFechaCierre() + "', "
+                        + "fechaCierre = '" + formatoDeFecha.format(ticket.getFechaCierre()) + "', "
                         + "horaCierre = '" + ticket.getHoraCierre() + "', "
                         + "idEstado = '" + ticket.getEstado().getIdEstado() + "', "
                         + "cotizacion = '" + ticket.getCotizacion() + "'"
                         + "WHERE idTicket = '" + ticket.getIdTicket() + "'";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new Ticket_TO();
                 throw e;
@@ -87,7 +90,7 @@ public class TicketDAOImpl implements TicketDAO {
             try {
                 String sql = "DELETE FROM ticket "
                         + "WHERE idTicket = '" + ticket.getIdTicket() + "'";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoticket = new Ticket_TO();
                 throw e;
@@ -101,7 +104,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public List<Ticket_TO> consultarTicket() throws Exception {
+    public List<Ticket_TO> consultarTickets() throws Exception {
         List<Ticket_TO> tickets = new ArrayList<>();
         try {
             try {
@@ -160,7 +163,7 @@ public class TicketDAOImpl implements TicketDAO {
         } finally {
             ConexionSQL.CerrarConexion();
         }
-        return ticket;
+        return nuevoticket;
     }
 
 }

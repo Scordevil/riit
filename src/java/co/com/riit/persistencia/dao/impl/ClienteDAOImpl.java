@@ -39,7 +39,7 @@ public class ClienteDAOImpl implements ClienteDAO {
                         + "'" + cliente.getCiudad().getIdCiudad() + "', "
                         + "'" + cliente.getDireccion() + "', "
                         + "'" + cliente.getAsesor().getIdUsuario() + "')";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoCliente = new Cliente_TO();
                 throw e;
@@ -62,7 +62,7 @@ public class ClienteDAOImpl implements ClienteDAO {
                         + "movil = '" + cliente.getMovil() + "', idCiudad = '" + cliente.getCiudad().getIdCiudad() + "', direccion = '" + cliente.getDireccion() + "', "
                         + "idAsesor ='" + cliente.getAsesor().getIdUsuario() + "' "
                         + "WHERE idCliente = '" + cliente.getIdCliente() + "'";
-                st.executeQuery(sql);
+                st.execute(sql);
             } catch (SQLException e) {
                 nuevoCliente = new Cliente_TO();
                 throw e;

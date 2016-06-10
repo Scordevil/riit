@@ -35,16 +35,29 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadoImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosSegunClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarOportunidadesImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarTicketImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarTicketSitioImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarTicketsImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarTicketsSitioImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarUsuarioImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarUsuariosImpl.class);
         resources.add(co.com.riit.servicio.impl.EditarClienteImpl.class);
         resources.add(co.com.riit.servicio.impl.EditarEmpleadoImpl.class);
         resources.add(co.com.riit.servicio.impl.EditarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarTicketImpl.class);
+        resources.add(co.com.riit.servicio.impl.EditarTicketSitioImpl.class);
         resources.add(co.com.riit.servicio.impl.EditarUsuarioImpl.class);
         resources.add(co.com.riit.servicio.impl.EliminarEmpleadoImpl.class);
+        resources.add(co.com.riit.servicio.impl.EliminarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.EliminarTicketImpl.class);
+        resources.add(co.com.riit.servicio.impl.EliminarTicketSitioImpl.class);
         resources.add(co.com.riit.servicio.impl.RegistrarClienteImpl.class);
         resources.add(co.com.riit.servicio.impl.RegistrarEmpleadoImpl.class);
         resources.add(co.com.riit.servicio.impl.RegistrarOportunidadImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarTicketImpl.class);
+        resources.add(co.com.riit.servicio.impl.RegistrarTicketSitioImpl.class);
         resources.add(co.com.riit.servicio.impl.RegistrarUsuarioImpl.class);
     }
     

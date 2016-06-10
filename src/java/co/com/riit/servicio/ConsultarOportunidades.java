@@ -6,13 +6,14 @@
 package co.com.riit.servicio;
 
 import co.com.riit.modelo.dto.Oportunidad_TO;
-import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Desarrollo_Planit
  */
-public interface EditarOportunidad {
-
-    public Oportunidad_TO editarOportunidad(int idOportunidad, int idEmpleado, int idUsuario, String fecha, int idCategoriaOportunidad) throws Exception;
+public interface ConsultarOportunidades {
+ 
+    public List<Oportunidad_TO> consultarOportunidades() throws Exception;
+    
 }

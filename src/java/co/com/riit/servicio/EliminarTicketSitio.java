@@ -5,14 +5,13 @@
  */
 package co.com.riit.servicio;
 
-import co.com.riit.modelo.dto.Oportunidad_TO;
-import java.util.Date;
+import co.com.riit.modelo.dto.TicketSitio_TO;
 
 /**
  *
  * @author Desarrollo_Planit
  */
-public interface EditarOportunidad {
+public interface EliminarTicketSitio {
 
-    public Oportunidad_TO editarOportunidad(int idOportunidad, int idEmpleado, int idUsuario, String fecha, int idCategoriaOportunidad) throws Exception;
+    public TicketSitio_TO eliminarTicketSitio(int idTicket) throws Exception;
 }
