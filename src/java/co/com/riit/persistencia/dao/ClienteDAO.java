@@ -6,6 +6,7 @@
 package co.com.riit.persistencia.dao;
 
 import co.com.riit.modelo.dto.Cliente_TO;
+import co.com.riit.modelo.dto.Empleado_TO;
 import co.com.riit.modelo.dto.Usuario_TO;
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface ClienteDAO {
     public List<Cliente_TO> consultarClientesSegunAsesor(Usuario_TO usuario) throws Exception;
 
     public Cliente_TO consultarCliente(Cliente_TO cliente) throws Exception;
+    
+    public Cliente_TO consultarInformacionClienteSegunEmpleado(Empleado_TO empleado) throws Exception;
 }

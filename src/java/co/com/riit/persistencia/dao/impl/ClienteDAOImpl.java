@@ -8,6 +8,7 @@ package co.com.riit.persistencia.dao.impl;
 import co.com.riit.conexion.ConexionSQL;
 import co.com.riit.modelo.dto.Ciudad_TO;
 import co.com.riit.modelo.dto.Cliente_TO;
+import co.com.riit.modelo.dto.Empleado_TO;
 import co.com.riit.modelo.dto.Usuario_TO;
 import co.com.riit.persistencia.dao.ClienteDAO;
 import java.sql.ResultSet;
@@ -168,7 +169,39 @@ public class ClienteDAOImpl implements ClienteDAO {
         } finally {
             ConexionSQL.CerrarConexion();
         }
-        return cliente;
+        return nuevocliente;
+    }
+
+    @Override
+    public Cliente_TO consultarInformacionClienteSegunEmpleado(Empleado_TO empleado) throws Exception {
+        Cliente_TO nuevocliente = new Cliente_TO();
+        try {
+            try {
+                String sql = "SELECT cliente.idCliente, cliente.razonSocial, cliente.nit, cliente.paginaWeb, cliente.email, cliente.telefono, cliente.movil, cliente.idCiudad, cliente.direccion, cliente.idAsesor"
+                        + " FROM cliente as cliente, empleado as empleado"
+                        + " WHERE cliente.idCliente = empleado.idCliente and empleado.idEmpleado = '" + empleado.getIdEmpleado() + "'";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    nuevocliente = new Cliente_TO(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            new Ciudad_TO(rs.getInt(8)),
+                            rs.getString(9),
+                            new Usuario_TO(rs.getInt(10)));
+                }
+            } catch (SQLException e) {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            ConexionSQL.CerrarConexion();
+        }
+        return  nuevocliente;
     }
 
 }

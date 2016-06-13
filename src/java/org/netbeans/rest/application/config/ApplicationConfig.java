@@ -36,6 +36,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadoImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarEmpleadosSegunClienteImpl.class);
+        resources.add(co.com.riit.servicio.impl.ConsultarInformacionClienteSegunEmpleadoImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarOportunidadImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarOportunidadesImpl.class);
         resources.add(co.com.riit.servicio.impl.ConsultarTicketImpl.class);
