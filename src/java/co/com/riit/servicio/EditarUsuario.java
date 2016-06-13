@@ -13,5 +13,5 @@ import co.com.riit.modelo.dto.Usuario_TO;
  */
 public interface EditarUsuario {
    
-    public Usuario_TO editarUsuario(int idUsuario, String nombre, String email, String celular, String contrasena, int idRol, int idEstado) throws Exception;
+    public Usuario_TO editarUsuario(int idUsuario, String nombre, String email, String celular, int idRol, int idEstado) throws Exception;
 }

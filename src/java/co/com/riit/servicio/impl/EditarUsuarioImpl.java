@@ -32,11 +32,17 @@ public class EditarUsuarioImpl implements EditarUsuario {
             @QueryParam("nombre") String nombre,
             @QueryParam("email") String email,
             @QueryParam("celular") String celular,
-            @QueryParam("contrasena") String contrasena,
             @QueryParam("idRol") int idRol,
             @QueryParam("idEstado") int idEstado) throws Exception {
 
-        Usuario_TO usuario = new Usuario_TO(idUsuario, nombre, email, celular, contrasena, new Rol_TO(idRol), new Estado_TO(idEstado));
+        Usuario_TO usuario = new Usuario_TO();
+        usuario.setIdUsuario(idUsuario);
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+        usuario.setCelular(celular);
+        usuario.setRol(new Rol_TO(idRol));
+        usuario.setEstado(new Estado_TO(idEstado));
+        
         UsuarioDAO usuarioDao = new UsuarioDAOImpl();
         return usuarioDao.editarUsuario(usuario);
     }

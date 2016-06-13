@@ -22,19 +22,20 @@ import java.util.List;
  * @author Desarrollo_Planit
  */
 public class UsuarioDAOImpl implements UsuarioDAO {
-    
+
     private final Statement st = ConexionSQL.conexion();
-    
+
     @Override
     public Usuario_TO registrarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
+        Config funciones = new Config();
         try {
             try {
                 String sql = "INSERT INTO usuario (nombre, email, celular, contrasena, idRol, idEstado) "
                         + "VALUES('" + usuario.getNombre() + "', "
                         + "'" + usuario.getEmail() + "', "
                         + "'" + usuario.getCelular() + "', "
-                        + "'" + usuario.getContrasena() + "', "
+                        + "'" + funciones.getMD5(usuario.getContrasena()) + "', "
                         + "'" + usuario.getRol().getIdRol() + "', "
                         + "'" + usuario.getEstado().getIdEstado() + "')";
                 st.execute(sql);
@@ -49,7 +50,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-    
+
     @Override
     public Usuario_TO editarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -58,7 +59,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 String sql = "UPDATE usuario SET nombre='" + usuario.getNombre() + "', "
                         + "email='" + usuario.getEmail() + "', "
                         + "celular='" + usuario.getCelular() + "', "
-                        + "contrasena='" + usuario.getContrasena() + "', "
                         + "idRol='" + usuario.getRol().getIdRol() + "', "
                         + "idEstado='" + usuario.getEstado().getIdEstado() + "' "
                         + "WHERE idUsuario = '" + usuario.getIdUsuario() + "'";
@@ -74,7 +74,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-    
+
     @Override
     public Usuario_TO consultarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -97,7 +97,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-    
+
     @Override
     public List<Usuario_TO> consultarUsuarios() throws Exception {
         List<Usuario_TO> usuarios = new ArrayList<>();
@@ -119,7 +119,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return usuarios;
     }
-    
+
     @Override
     public Usuario_TO consultarDatosSesionUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -143,5 +143,5 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-    
+
 }
