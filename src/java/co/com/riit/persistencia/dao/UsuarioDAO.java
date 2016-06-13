@@ -18,5 +18,6 @@ public interface UsuarioDAO {
     public Usuario_TO editarUsuario(Usuario_TO usuario) throws Exception;
     public Usuario_TO consultarUsuario(Usuario_TO usuario) throws Exception;
     public List<Usuario_TO> consultarUsuarios() throws Exception;
+    public Usuario_TO consultarDatosSesionUsuario(Usuario_TO usuario) throws Exception;
     
 }

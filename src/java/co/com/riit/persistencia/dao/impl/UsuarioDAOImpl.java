@@ -6,6 +6,7 @@
 package co.com.riit.persistencia.dao.impl;
 
 import co.com.riit.conexion.ConexionSQL;
+import co.com.riit.config.Config;
 import co.com.riit.modelo.dto.Estado_TO;
 import co.com.riit.modelo.dto.Rol_TO;
 import co.com.riit.modelo.dto.Usuario_TO;
@@ -21,9 +22,9 @@ import java.util.List;
  * @author Desarrollo_Planit
  */
 public class UsuarioDAOImpl implements UsuarioDAO {
-
+    
     private final Statement st = ConexionSQL.conexion();
-
+    
     @Override
     public Usuario_TO registrarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -48,7 +49,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-
+    
     @Override
     public Usuario_TO editarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -73,7 +74,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-
+    
     @Override
     public Usuario_TO consultarUsuario(Usuario_TO usuario) throws Exception {
         Usuario_TO nuevousuario = new Usuario_TO();
@@ -96,7 +97,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return nuevousuario;
     }
-
+    
     @Override
     public List<Usuario_TO> consultarUsuarios() throws Exception {
         List<Usuario_TO> usuarios = new ArrayList<>();
@@ -118,5 +119,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return usuarios;
     }
-
+    
+    @Override
+    public Usuario_TO consultarDatosSesionUsuario(Usuario_TO usuario) throws Exception {
+        Usuario_TO nuevousuario = new Usuario_TO();
+        Config funcion = new Config();
+        try {
+            try {
+                String sql = "SELECT idUsuario, nombre, email, celular, contrasena, idRol, idEstado "
+                        + "FROM usuario WHERE email = '" + usuario.getEmail() + "' AND contrasena = '" + funcion.getMD5(usuario.getContrasena()) + "'";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    nuevousuario = new Usuario_TO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), new Rol_TO(rs.getInt(6)), new Estado_TO(rs.getInt(7)));
+                }
+            } catch (SQLException e) {
+                nuevousuario = new Usuario_TO();
+                throw e;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            ConexionSQL.CerrarConexion();
+        }
+        return nuevousuario;
+    }
+    
 }
