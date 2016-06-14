@@ -51,6 +51,13 @@ public class Ciudad_TO {
         this.idPais = idPais;
     }
 
+    public Ciudad_TO(int idCiudad, String nombre) {
+        this.idCiudad = idCiudad;
+        this.nombre = nombre;
+    }
+    
+    
+
     //Getters and Setters
     public int getIdCiudad() {
         return idCiudad;

@@ -147,11 +147,11 @@ public class Usuario_TO {
         this.estado = estado;
     }
 
-   
-
     @Override
     public String toString() {
-        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", email=" + email + ", celular=" + celular + ", contrasena=" + contrasena + ", idRol=" + rol.getIdRol() + ", idEstado=" + estado.getIdEstado() + '}';
+        return "Usuario_TO{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", email=" + email + ", celular=" + celular + ", contrasena=" + contrasena + ", rol=" + rol + ", estado=" + estado + '}';
     }
+
+
 
 }

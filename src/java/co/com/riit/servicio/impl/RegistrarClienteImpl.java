@@ -39,6 +39,7 @@ public class RegistrarClienteImpl implements RegistrarCliente {
             @QueryParam("idUsuario") int idAsesor) throws Exception {
         Cliente_TO cliente = new Cliente_TO(razonSocial, nit, paginaWeb, email, telefono, movil, new Ciudad_TO(idCiudad), direccion, new Usuario_TO(idAsesor));
         ClienteDAO clienteDao = new ClienteDAOImpl();
+        System.out.println("prueba: "+cliente);
         return clienteDao.registrarUsuario(cliente);
     }
 
